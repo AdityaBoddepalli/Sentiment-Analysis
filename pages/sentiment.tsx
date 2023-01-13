@@ -19,8 +19,6 @@ export async function getServerSideProps(context: { query: { text: String; }; })
     return {
         props: {
             text: context.query.text,
-            // output: sendForSentimentAnalysis(context.query.text)
-            // output: 'deez/'
         }
     }
 }

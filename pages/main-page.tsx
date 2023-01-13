@@ -1,28 +1,6 @@
 import Link from "next/link";
 import { SetStateAction, useState } from "react";
 
-function sendForSentimentAnalysis() {
-    let url = ".";
-    const text = document.getElementById("input");
-    if (text != null) {
-        url = url + "/sentiment?" + "text" + "=" + (text as HTMLInputElement).value;
-    }
-    let output: String = "";
-
-    fetch(url).then((response) => {
-        response.json().then((data) => {
-            output = data.label;
-            let color = "white";
-            switch (output) {
-                case "positive": color = "green"; break;
-                case "negative": color = "red"; break;
-                case "neutral": color = "yellow"; break;
-                default: color = "black";
-            }
-        })
-    });
-    return output;
-}
 
 function MainPage() {
     const [message, setMessage] = useState('');
