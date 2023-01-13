@@ -25,7 +25,6 @@ export async function getServerSideProps(context: { query: { text: String; }; })
 
 function Sentiment(props: { text: String; }) {
 
-    // const [flag, setFlag] = useState(true);
     const [output, setOutput] = useState('');
 
     useEffect(() => {
