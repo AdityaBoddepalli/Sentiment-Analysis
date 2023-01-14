@@ -42,7 +42,7 @@ function MainPage() {
                     </div>
 
                     <p className="text-white py-10">
-                        Note: This application uses a free instance of the IBM NLU Watson API which offers limited resources, therefore for some inputs the API call returns empty data. In such cases the result will default to 0 for emotion and 'Could not interpret' for sentiment.
+                        Note: This application uses a free instance of the IBM NLU Watson API which offers limited resources; therefore, for some inputs the API call returns empty data. In such cases the result will default to 0 for emotion and 'Could not interpret' for sentiment.
                     </p>
 
                 </div>
