@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
@@ -9,9 +8,6 @@ const api_key = process.env.API_KEY;
 const api_url = process.env.API_URL;
 
 function getNLUInstance() {
-  /*Type the code to create the NLU instance and return it.
-  You can refer to the image in the instructions document
-  to do the same.*/
   const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
   const { IamAuthenticator } = require('ibm-watson/auth');
 
@@ -29,9 +25,7 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  let textToAnalyze = req.query.text
-  console.log("dkafjsdlsdjklf =" + textToAnalyze);
-
+  let textToAnalyze = req.query.text;
   const analyzeParams = {
     'text': textToAnalyze,
     'features': {
@@ -53,6 +47,6 @@ export default function handler(
   })
   .catch((err: string) => {
       // return console.log("Could not do desired operation " + err);
-      return res.json({label: 'neutral'})
+      return res.json({label: 'Could not interpret'})
   });
 }

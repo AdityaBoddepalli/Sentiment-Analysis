@@ -1,20 +1,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-function sendForSentimentAnalysis(input: String) {
-    let url = "./api/hello";
-    url = url + "?" + "text" + "=" + input;
-    let output: String = "";
-
-    fetch(url).then((response) => {
-        response.json().then((data) => {
-            output = data.label;
-        })
-    });
-    return output;
-}
-
-
 export async function getServerSideProps(context: { query: { text: String; }; }) {
     return {
         props: {
@@ -28,12 +14,12 @@ function Sentiment(props: { text: String; }) {
     const [output, setOutput] = useState('');
 
     useEffect(() => {
-        let url = "./api/hello";
+        let url = "./api/sentiment_endpoint";
         url = url + "?" + "text" + "=" + props.text;
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
-                setOutput(data.label)
+                setOutput(data.label);
             })
     }, [])
     return (
@@ -43,7 +29,7 @@ function Sentiment(props: { text: String; }) {
                     <h1 className="text-4xl text-white">
                         {props.text}
                     </h1>
-                    <h1 className={`text-5xl ${(output === 'positive'? 'text-green-500': (output === 'neutral' ? 'text-yellow-400' : 'text-red-600'))}`}>
+                    <h1 className={`text-5xl ${(output === 'positive'? 'text-green-500': (output === 'Could not interpret' ? 'text-white' : (output === 'neutral' ? 'text-yellow-500' : 'text-red-600')))}`}>
                         {output}
                     </h1>
                 </div>
